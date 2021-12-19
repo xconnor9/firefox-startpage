@@ -31,19 +31,22 @@
         -webkit-text-fill-color: transparent;
       }
       input {
-        height: 28px;
+        height: 32px;
         border-radius: 6px;
         color: #eeeeee;
         background-color: #414868;
         border: none;
         text-align: center;
       }
+      input:focus{
+        outline: none;
+      }
     </style>
   </head>
   <body>
     <h1><a class="fire">fire</a>fox</h1>
     <form action="http://www.google.com/search" method="GET">
-      <input autofocus="" name="q" type="search" placeholder="">
+      <input autofocus="" name="q" type="search" placeholder="" autocomplete="off">
     </form>
   </body>
 </html>
