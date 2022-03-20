@@ -1,0 +1,1 @@
+Requires a font [patched with md icons](https://github.com/ryanoasis/nerd-fonts).
