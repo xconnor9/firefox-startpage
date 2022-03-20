@@ -18,10 +18,13 @@
       body {
         padding-bottom: 15vh;
       }
+      a {
+        text-decoration: none;
+      }
       h1 {
         font-size: 4em;
         grid-column: 1 / -1;
-        margin-bottom: 12px;
+        margin-bottom: 20px;
         text-align: center;
       }
       h1 .fire {
@@ -30,23 +33,119 @@
         background-clip: text;
         -webkit-text-fill-color: transparent;
       }
-      input {
-        height: 32px;
-        border-radius: 6px;
-        color: #eeeeee;
-        background-color: #414868;
-        border: none;
-        text-align: center;
+      .icons {
+        display: flex;
+        gap: 14px;
       }
-      input:focus{
-        outline: none;
+      .icon {
+        display: flex;
+        background: rgba(255, 255, 255, 0.1);
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        transition: all 0.1s ease;
+        border-radius: 8px;
+      }
+      .icon a {
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        display: flex;
+        width: 75px;
+        height: 75px;
+        border-radius: 8px;
+      }
+      .icon span {
+        font-size: 24px;
+        color: #eee;
+        opacity: 0.6;
+        margin-left: -7px;
+      }
+      .icon.hn span {
+        margin-bottom: 1px;
+      }
+      .icon.reddit span {
+        font-size: 23px;
+        margin-bottom: 2px;
+        margin-left: -10px;
+      }
+      .icon.youtube span {
+        font-size: 26px;
+        margin-top: 1px;
+        margin-left: 0;
+      }
+      .icon.mail span {
+        font-size: 28px;
+        margin-bottom: 2px;
+        margin-left: -9px;
+      }
+      .icon.newspaper span {
+        font-size: 23px;
+        margin-bottom: 2px;
+        margin-left: -9px;
+      }
+      .icon.github span {
+        font-size: 24px;
+        margin-bottom: 2px;
+        margin-left: -9px;
+      }
+      .icon:hover {
+        cursor: pointer;
+      }
+
+      .icon.hn:hover {
+        background: #ff6600;
+      }
+      .icon.hn:hover span {
+        color: #fff;
+        opacity: 1;
+      }
+      .icon.reddit:hover {
+        background: #FF4500;
+      }
+      .icon.reddit:hover span {
+        color: #fff;
+        opacity: 1;
+      }
+      .icon.mail:hover {
+        background: #DB4437;
+      }
+      .icon.mail:hover span {
+        color: #fff;
+        opacity: 1;
+      }
+      .icon.youtube:hover {
+        background: #FF0000;
+      }
+      .icon.youtube:hover span {
+        color: #fff;
+        opacity: 1;
+      }
+      .icon.github:hover {
+        background: #4078c0;
+      }
+      .icon.github:hover span {
+        color: #fff;
+        opacity: 1;
+      }
+      .icon.newspaper:hover {
+        background: #096dd2;
+      }
+      .icon.newspaper:hover span {
+        color: #fff;
+        opacity: 1;
       }
     </style>
   </head>
   <body>
     <h1><a class="fire">fire</a>fox</h1>
-    <form action="http://www.google.com/search" method="GET">
-      <input autofocus="" name="q" type="search" placeholder="" autocomplete="off">
-    </form>
+    <div class="icons">
+      <div class="icon reddit"><a href="https://www.reddit.com"><span></span></a></div>
+      <div class="icon mail"><a href="https://mail.google.com/mail/u/0/"><span></span></a></div>
+      <div class="icon youtube"><a href="https://www.youtube.com/"><span>輸</span></a></div>
+      <div class="icon github"><a href="https://github.com/"><span></span></a></div>
+      <div class="icon hn"><a href="https://news.ycombinator.com/"><span></span></a></div>
+      <div class="icon newspaper"><a href="https://www.smh.com.au/"><span></span></a></div>
+    </div>
   </body>
 </html>
