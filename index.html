@@ -44,6 +44,8 @@
       }
       .icons {
         display: flex;
+        flex-wrap: wrap;
+        width: 344px;
         gap: 14px;
       }
       .icon {
@@ -89,6 +91,12 @@
       .icon.football span {
         font-size: 27px;
         margin-bottom: 1px;
+      }
+      .icon.github span {
+        font-size: 25px;
+      }
+      .icon.localhost span {
+        font-size: 26px;
       }
       .icon:hover {
         cursor: pointer;
@@ -136,6 +144,20 @@
         color: #333333;
         opacity: 1;
       }
+      .icon.github:hover {
+        background: #cccccc;
+      }
+      .icon.github:hover span {
+        color: #333333;
+        opacity: 1;
+      }
+      .icon.localhost:hover {
+        background: #256b34;
+      }
+      .icon.localhost:hover span {
+        color: #fff;
+        opacity: 1;
+      }
     </style>
   </head>
   <body>
@@ -147,6 +169,8 @@
       <div class="icon newspaper"><a href="https://www.smh.com.au/" target="_top"><span></span></a></div>
       <div class="icon football"><a href="https://theathletic.com/football/premier-league/" target="_top"><span>醴</span></a></div>
       <div class="icon hn"><a href="https://news.ycombinator.com/" target="_top"><span></span></a></div>
+      <div class="icon github"><a href="https://github.com/" target="_top"><span></span></a></div>
+      <div class="icon localhost"><a href="http://localhost:3000/" target="_top"><span></span></a></div>
     </div>
   </body>
 </html>
