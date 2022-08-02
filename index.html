@@ -4,15 +4,27 @@
     <title>Firefox by Mozilla</title>
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
     <style>
-      * {
-        -webkit-touch-callout: none; /* iOS Safari */
-          -webkit-user-select: none; /* Safari */
-          -khtml-user-select: none; /* Konqueror HTML */
-            -moz-user-select: none; /* Old versions of Firefox */
-              -ms-user-select: none; /* Internet Explorer/Edge */
-                  user-select: none; /* Non-prefixed version, currently
-                                        supported by Chrome, Edge, Opera and Firefox */
+      :root {
+        --nerd-font: "Ubuntu Nerd Font";
+
+        --color-hn: #FF6600;
+        --color-re: #FF4500;
+        --color-gm: #DB4437;
+        --color-yt: #FF0000;
+        --color-np: #096dd2;
+        --color-at: #CCCCCC;
+        --color-gh: #CCCCCC;
+        --color-lh: #256b34;
+
+        --text-light: #EEE;
+        --text-dark: #333;
       }
+
+      * {
+          -webkit-user-select: none;
+                  user-select: none;
+      }
+
       html {
         align-items: center;
         display: flex;
@@ -21,15 +33,18 @@
         margin: 0;
         background-color: #1d2128;
         color: #ebdbb2;
-        font-family: "Ubuntu Nerd Font";
+        font-family: var(--nerd-font);
         overflow: hidden;
       }
+
       body {
         padding-bottom: 15vh;
       }
+
       a {
         text-decoration: none;
       }
+
       h1 {
         font-size: 4em;
         grid-column: 1 / -1;
@@ -42,6 +57,7 @@
         background-clip: text;
         -webkit-text-fill-color: transparent;
       }
+
       .icons {
         display: flex;
         flex-wrap: wrap;
@@ -57,6 +73,9 @@
         transition: all 0.1s ease;
         border-radius: 8px;
       }
+      .icon:hover {
+        cursor: pointer;
+      }
       .icon a {
         justify-content: center;
         align-items: center;
@@ -68,10 +87,15 @@
       }
       .icon span {
         font-size: 24px;
-        color: #eee;
+        color: var(--text-light);
         opacity: 0.6;
-        font-family: "Ubuntu Nerd Font";
       }
+      .icon:hover span {
+        color: #FFF;
+        opacity: 1;
+      }
+
+      /* some minor icon spacing adjustments */
       .icon.hn span {
         margin-bottom: 1px;
       }
@@ -98,65 +122,35 @@
       .icon.localhost span {
         font-size: 26px;
       }
-      .icon:hover {
-        cursor: pointer;
-      }
 
       .icon.hn:hover {
-        background: #ff6600;
-      }
-      .icon.hn:hover span {
-        color: #fff;
-        opacity: 1;
+        background: var(--color-hn);
       }
       .icon.reddit:hover {
-        background: #FF4500;
-      }
-      .icon.reddit:hover span {
-        color: #fff;
-        opacity: 1;
+        background: var(--color-re);
       }
       .icon.mail:hover {
-        background: #DB4437;
-      }
-      .icon.mail:hover span {
-        color: #fff;
-        opacity: 1;
+        background: var(--color-gm);
       }
       .icon.youtube:hover {
-        background: #FF0000;
-      }
-      .icon.youtube:hover span {
-        color: #fff;
-        opacity: 1;
+        background: var(--color-yt);
       }
       .icon.newspaper:hover {
-        background: #096dd2;
-      }
-      .icon.newspaper:hover span {
-        color: #fff;
-        opacity: 1;
+        background: var(--color-np);
       }
       .icon.football:hover {
-        background: #cccccc;
-      }
-      .icon.football:hover span {
-        color: #333333;
-        opacity: 1;
+        background: var(--color-at);
       }
       .icon.github:hover {
-        background: #cccccc;
-      }
-      .icon.github:hover span {
-        color: #333333;
-        opacity: 1;
+        background: var(--color-gh);
       }
       .icon.localhost:hover {
-        background: #256b34;
+        background: var(--color-lh);
       }
-      .icon.localhost:hover span {
-        color: #fff;
-        opacity: 1;
+
+      /* light icons get dark text */
+      .icon.football:hover span, .icon.github:hover span {
+        color: var(--text-dark);
       }
     </style>
   </head>
