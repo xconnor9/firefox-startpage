@@ -1,4 +1,4 @@
-![Firefox Startpage](https://johansen.software/firefox-startpage/images/screenshot-2022.png)
+![Firefox Startpage](https://user-images.githubusercontent.com/6005261/190838606-75f46b0f-9533-421a-a2d1-c31ea5981569.png)
 
 # Requirements
 
