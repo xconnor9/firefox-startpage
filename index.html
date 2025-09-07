@@ -1,28 +1,53 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Firefox by Mozilla</title>
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="favicon-32x32.png"
+    />
+
+    <!-- Inter variable font -->
+    <style>
+      @font-face {
+        font-family: "Inter";
+        src: url("fonts/Inter-VariableFont_opsz,wght.ttf") format("truetype");
+        font-weight: 100 900;
+        font-style: normal;
+      }
+    </style>
+
+    <!-- Font Awesome CDN -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+
     <style>
       :root {
-        --nerd-font: "Ubuntu Nerd Font";
+        --nerd-font: "Inter", sans-serif;
 
-        --color-hn: #FF6600;
-        --color-re: #FF4500;
-        --color-gm: #DB4437;
-        --color-yt: #FF0000;
+        --color-hn: #ff6600;
+        --color-re: #ff4500;
+        --color-gm: #db4437;
+        --color-yt: #ff0000;
         --color-np: #096dd2;
-        --color-at: #CCCCCC;
-        --color-gh: #CCCCCC;
+        --color-at: #cccccc;
+        --color-gh: #cccccc;
         --color-lh: #256b34;
 
-        --text-light: #EEE;
+        --text-light: #eee;
         --text-dark: #333;
       }
 
       * {
-          -webkit-user-select: none;
-                  user-select: none;
+        -webkit-user-select: none;
+        user-select: none;
+        box-sizing: border-box;
       }
 
       html {
@@ -47,7 +72,6 @@
 
       h1 {
         font-size: 4em;
-        grid-column: 1 / -1;
         margin-bottom: 20px;
         text-align: center;
       }
@@ -59,10 +83,10 @@
       }
 
       .icons {
-        display: flex;
-        flex-wrap: wrap;
-        width: 344px;
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
         gap: 14px;
+        width: auto;
       }
       .icon {
         display: flex;
@@ -84,32 +108,21 @@
         width: 75px;
         height: 75px;
         border-radius: 8px;
-      }
-      .icon span {
-        font-size: 24px;
+        font-size: 28px;
         color: var(--text-light);
         opacity: 0.6;
       }
-      .icon:hover span {
-        color: #FFF;
+      .icon a:hover {
+        color: #fff;
         opacity: 1;
       }
 
-      /* some minor icon spacing adjustments */
-      .icon.reddit span {
-        font-size: 23px;
-      }
-      .icon.youtube span {
-        font-size: 28px;
-      }
-      .icon.mail span {
-        font-size: 27px;
-      }
-      .icon.github span {
-        font-size: 25px;
-      }
+      /* Hover backgrounds */
       .icon.reddit:hover {
         background: var(--color-re);
+      }
+      .icon.github:hover {
+        background: var(--color-gh);
       }
       .icon.mail:hover {
         background: var(--color-gm);
@@ -117,12 +130,33 @@
       .icon.youtube:hover {
         background: var(--color-yt);
       }
-      .icon.github:hover {
-        background: var(--color-gh);
+      .icon.backloggd:hover {
+        background: #7289da; /* placeholder blue */
+      }
+      .icon.letterboxd:hover {
+        background: #00d474; /* Letterboxd green */
+      }
+      .icon.serialisd:hover {
+        background: #ff9900; /* orange TV accent */
+      }
+      .icon.spotify:hover {
+        background: #1db954; /* Spotify green */
+      }
+      .icon.plex:hover {
+        background: #e5a00d; /* Plex gold */
+      }
+      .icon.truenas:hover {
+        background: #0095d5; /* TrueNAS blue */
+      }
+      .icon.immich:hover {
+        background: #ff4f00; /* Immich orange */
+      }
+      .icon.googlephotos:hover {
+        background: #4285f4; /* Google blue */
       }
 
-      /* light icons get dark text */
-      .icon.football:hover span, .icon.github:hover span {
+      /* dark text on light bg */
+      .icon.github:hover a {
         color: var(--text-dark);
       }
     </style>
@@ -130,14 +164,56 @@
   <body>
     <h1><a class="fire">fire</a>fox</h1>
     <div class="icons">
-      <div class="icon reddit"><a href="https://www.reddit.com" target="_top"><span></span></a></div>
-      <div class="icon github"><a href="https://github.com/" target="_top"><span></span></a></div>
-      <div class="icon mail"><a href="https://outlook.live.com/" target="_top"><span></span></a></div>
-      <div class="icon youtube"><a href="https://www.youtube.com/" target="_top"><span>輸</span></a></div>
-      <div class="icon backloggd"><a href="https://backloggd.com/" target="_top"><span>輸</span></a></div>
-      <div class="icon letterboxd"><a href="https://letterboxd.com/" target="_top"><span>輸</span></a></div>
-      <div class="icon serialisd"><a href="https://www.serializd.com/" target="_top"><span>輸</span></a></div>
-      <div class="icon youtube"><a href="https://www.youtube.com/" target="_top"><span>輸</span></a></div>
+      <div class="icon reddit">
+        <a href="https://www.reddit.com" target="_top">
+          <i class="fab fa-reddit"></i>
+        </a>
+      </div>
+      <div class="icon github">
+        <a href="https://github.com/" target="_top">
+          <i class="fab fa-github"></i>
+        </a>
+      </div>
+      <div class="icon mail">
+        <a href="https://outlook.live.com/" target="_top">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </div>
+      <div class="icon youtube">
+        <a href="https://www.youtube.com/" target="_top">
+          <i class="fab fa-youtube"></i>
+        </a>
+      </div>
+      <div class="icon backloggd">
+        <a href="https://backloggd.com/" target="_top">
+          <i class="fas fa-gamepad"></i>
+        </a>
+      </div>
+      <div class="icon letterboxd">
+        <a href="https://letterboxd.com/" target="_top">
+          <i class="fas fa-film"></i>
+        </a>
+      </div>
+      <div class="icon serialisd">
+        <a href="https://www.serializd.com/" target="_top">
+          <i class="fas fa-tv"></i>
+        </a>
+      </div>
+      <div class="icon plex">
+        <a href="http://192.168.0.28:32400/web/index.html#!/ target="_top">
+          <i class="fas fa-play-circle"></i>
+        </a>
+      </div>
+      <div class="icon truenas">
+        <a href="https://192.168.0.28/" target="_top">
+          <i class="fas fa-server"></i>
+        </a>
+      </div>
+	  <div class="icon immich">
+        <a href="http://your-immich-ip/" target="_top">
+          <i class="fas fa-image"></i>
+        </a>
+      </div>
     </div>
   </body>
 </html>
