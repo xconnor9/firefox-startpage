@@ -31,15 +31,10 @@
       :root {
         --nerd-font: "Inter", sans-serif;
 
-        --color-hn: #ff6600;
         --color-re: #ff4500;
         --color-gm: #db4437;
         --color-yt: #ff0000;
-        --color-np: #096dd2;
-        --color-at: #cccccc;
         --color-gh: #cccccc;
-        --color-lh: #256b34;
-
         --text-light: #eee;
         --text-dark: #333;
       }
@@ -66,13 +61,9 @@
         padding-bottom: 15vh;
       }
 
-      a {
-        text-decoration: none;
-      }
-
       h1 {
-        font-size: 4em;
-        margin-bottom: 20px;
+        font-size: 5em;
+        margin-bottom: 25px;
         text-align: center;
       }
       h1 .fire {
@@ -85,80 +76,117 @@
       .icons {
         display: grid;
         grid-template-columns: repeat(5, 1fr);
-        gap: 14px;
+        gap: 18px;
         width: auto;
       }
+
       .icon {
         display: flex;
+        flex-direction: column;
         background: #2e3440;
         justify-content: center;
         align-items: center;
         text-align: center;
-        transition: all 0.1s ease;
-        border-radius: 8px;
+        border-radius: 10px;
+        padding: 8px;
+
+        /* entry animation */
+        opacity: 0;
+        transform: translateY(20px);
+        animation: fadeInUp 0.5s forwards;
+
+        /* smooth hover transitions */
+        transition: transform 0.2s ease,
+                    box-shadow 0.2s ease,
+                    background-color 0.2s ease,
+                    color 0.2s ease;
       }
+
       .icon:hover {
+        transform: scale(1.08);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
         cursor: pointer;
       }
+
       .icon a {
+        display: flex;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
-        text-align: center;
-        display: flex;
-        width: 75px;
-        height: 75px;
-        border-radius: 8px;
-        font-size: 28px;
+        width: 100px;
+        height: 100px;
+        border-radius: 10px;
+        font-size: 36px;
         color: var(--text-light);
-        opacity: 0.6;
+        opacity: 0.8;
+        text-decoration: none;
+        transition: color 0.2s ease, opacity 0.2s ease;
       }
+
       .icon a:hover {
         color: #fff;
         opacity: 1;
       }
 
-      /* Hover backgrounds */
-      .icon.reddit:hover {
-        background: var(--color-re);
+      /* icon scaling on hover */
+      .icon i {
+        transition: transform 0.2s ease;
       }
-      .icon.github:hover {
-        background: var(--color-gh);
-      }
-      .icon.mail:hover {
-        background: var(--color-gm);
-      }
-      .icon.youtube:hover {
-        background: var(--color-yt);
-      }
-      .icon.backloggd:hover {
-        background: #7289da; /* placeholder blue */
-      }
-      .icon.letterboxd:hover {
-        background: #00d474; /* Letterboxd green */
-      }
-      .icon.serialisd:hover {
-        background: #ff9900; /* orange TV accent */
-      }
-      .icon.spotify:hover {
-        background: #1db954; /* Spotify green */
-      }
-      .icon.plex:hover {
-        background: #e5a00d; /* Plex gold */
-      }
-      .icon.truenas:hover {
-        background: #0095d5; /* TrueNAS blue */
-      }
-      .icon.immich:hover {
-        background: #ff4f00; /* Immich orange */
-      }
-      .icon.googlephotos:hover {
-        background: #4285f4; /* Google blue */
+      .icon:hover i {
+        transform: scale(1.15);
       }
 
-      /* dark text on light bg */
-      .icon.github:hover a {
-        color: var(--text-dark);
+      /* focus styles for keyboard nav */
+      .icon a:focus {
+        outline: 3px solid #fabd2f;
+        outline-offset: 4px;
       }
+
+      .icon .label {
+        font-size: 0.8rem;
+        font-weight: 600;
+        margin-top: 6px;
+        color: var(--text-light);
+        opacity: 0.8;
+        text-decoration: none;
+        transition: color 0.2s ease, opacity 0.2s ease;
+      }
+
+      .icon:hover .label {
+        color: #fff;
+        opacity: 1;
+      }
+
+      /* stagger animation delays */
+      .icon:nth-child(1) { animation-delay: 0.05s; }
+      .icon:nth-child(2) { animation-delay: 0.1s; }
+      .icon:nth-child(3) { animation-delay: 0.15s; }
+      .icon:nth-child(4) { animation-delay: 0.2s; }
+      .icon:nth-child(5) { animation-delay: 0.25s; }
+      .icon:nth-child(6) { animation-delay: 0.3s; }
+      .icon:nth-child(7) { animation-delay: 0.35s; }
+      .icon:nth-child(8) { animation-delay: 0.4s; }
+      .icon:nth-child(9) { animation-delay: 0.45s; }
+      .icon:nth-child(10) { animation-delay: 0.5s; }
+
+      @keyframes fadeInUp {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Hover backgrounds */
+      .icon.reddit:hover { background: var(--color-re); }
+      .icon.github:hover { background: var(--color-gh); }
+      .icon.mail:hover { background: var(--color-gm); }
+      .icon.youtube:hover { background: var(--color-yt); }
+      .icon.backloggd:hover { background: #7289da; }
+      .icon.letterboxd:hover { background: #00d474; }
+      .icon.serialisd:hover { background: #ff9900; }
+      .icon.immich:hover { background: #ff4f00; }
+      .icon.plex:hover { background: #e5a00d; }
+      .icon.truenas:hover { background: #0095d5; }
     </style>
   </head>
   <body>
@@ -167,51 +195,61 @@
       <div class="icon reddit">
         <a href="https://www.reddit.com" target="_top">
           <i class="fab fa-reddit"></i>
+          <span class="label">Reddit</span>
         </a>
       </div>
       <div class="icon github">
         <a href="https://github.com/" target="_top">
           <i class="fab fa-github"></i>
+          <span class="label">GitHub</span>
         </a>
       </div>
       <div class="icon mail">
         <a href="https://outlook.live.com/" target="_top">
           <i class="fas fa-envelope"></i>
+          <span class="label">Mail</span>
         </a>
       </div>
       <div class="icon youtube">
         <a href="https://www.youtube.com/" target="_top">
           <i class="fab fa-youtube"></i>
+          <span class="label">YouTube</span>
         </a>
       </div>
       <div class="icon backloggd">
         <a href="https://backloggd.com/" target="_top">
           <i class="fas fa-gamepad"></i>
+          <span class="label">Backloggd</span>
         </a>
       </div>
       <div class="icon letterboxd">
         <a href="https://letterboxd.com/" target="_top">
           <i class="fas fa-film"></i>
+          <span class="label">Letterboxd</span>
         </a>
       </div>
       <div class="icon serialisd">
         <a href="https://www.serializd.com/" target="_top">
           <i class="fas fa-tv"></i>
+          <span class="label">Serializd</span>
+        </a>
+      </div>
+      <div class="icon immich">
+        <a href="http://your-immich-ip/" target="_top">
+          <i class="fas fa-images"></i>
+          <span class="label">Immich</span>
         </a>
       </div>
       <div class="icon plex">
-        <a href="http://192.168.0.28:32400/web/index.html#!/ target="_top">
+        <a href="http://your-plex-server-ip:32400/web" target="_top">
           <i class="fas fa-play-circle"></i>
+          <span class="label">Plex</span>
         </a>
       </div>
       <div class="icon truenas">
         <a href="https://192.168.0.28/" target="_top">
           <i class="fas fa-server"></i>
-        </a>
-      </div>
-	  <div class="icon immich">
-        <a href="http://your-immich-ip/" target="_top">
-          <i class="fas fa-image"></i>
+          <span class="label">TrueNAS</span>
         </a>
       </div>
     </div>
