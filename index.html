@@ -1,205 +1,242 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Firefox by Mozilla</title>
-  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Firefox by Mozilla</title>
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
 
-  <style>
-    @font-face {
-      font-family: "Inter";
-      src: url("fonts/Inter-VariableFont_opsz,wght.ttf") format("truetype");
-      font-weight: 100 900;
-      font-style: normal;
-    }
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-    :root {
-      --nerd-font: "Inter", sans-serif;
-      --color-re: #ff4500;
-      --color-gm: #db4437;
-      --color-yt: #ff0000;
-      --text-light: #eee;
-    }
+<style>
+@font-face {
+  font-family: "Inter";
+  src: url("fonts/Inter-VariableFont_opsz,wght.ttf") format("truetype");
+  font-weight: 100 900;
+  font-style: normal;
+}
 
-    * { box-sizing:border-box; user-select:none; }
+:root {
+  --nerd-font: "Inter", sans-serif;
+  --color-re: #ff4500;
+  --color-yt: #ff0000;
+  --text-light: #eee;
+}
 
-    html {
-      height:100%;
-      margin:0;
-      background:#1d2128;
-      color:#ebdbb2;
-      font-family:var(--nerd-font);
-      display:flex;
-      justify-content:center;
-      align-items:center;
-    }
+* { box-sizing:border-box; user-select:none; }
 
-    body {
-      margin:0;
-      padding-bottom:15vh;
-      text-align:center;
-    }
+html, body {
+  height:100%;
+  margin:0;
+  background:#1d2128;
+  color:#ebdbb2;
+  font-family:var(--nerd-font);
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+}
 
-    h1 { font-size:5em; margin:0 0 25px; }
-    h1 .fire {
-      background-image:linear-gradient(65deg,#fb4934,#fabd2f);
-      background-clip:text;
-      -webkit-background-clip:text;
-      -webkit-text-fill-color:transparent;
-    }
+body { padding-bottom:15vh; text-align:center; }
 
-    .icons {
-      display:grid;
-      grid-template-columns:repeat(5,1fr);
-      gap:18px;
-      margin-bottom:45px;
-      max-width:90vw;
-    }
+h1 { font-size:5em; margin:25px 0; }
+h1 .fire {
+  background-image: linear-gradient(65deg,#fb4934,#fabd2f,#fabd2f,#fb4934);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 300% 300%;
+  animation: gradientText 4s ease infinite;
+}
 
-    .icon {
-      display:flex;
-      flex-direction:column;
-      justify-content:center;
-      align-items:center;
-      background:#2e3440;
-      border-radius:10px;
-      padding:8px;
-      opacity:0;
-      transform:translateY(20px);
-      animation:fadeInUp 0.4s forwards;
-      transition: transform 0.15s, box-shadow 0.15s, background-color 0.25s, color 0.25s;
-    }
+@keyframes gradientText {
+  0% { background-position:0% 50%; }
+  50% { background-position:100% 50%; }
+  100% { background-position:0% 50%; }
+}
 
-    .icon a {
-      display:flex;
-      flex-direction:column;
-      justify-content:center;
-      align-items:center;
-      width:100px;
-      height:100px;
-      border-radius:10px;
-      color:var(--text-light);
-      text-decoration:none;
-      opacity:0.9;
-      transition: color 0.2s, opacity 0.2s;
-    }
+.icons {
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:18px;
+  margin-bottom:45px;
+  max-width:90vw;
+}
 
-    .icon i, .icon svg, .icon img {
-      width:36px;
-      height:36px;
-      font-size:36px;
-      transition: transform 0.15s;
-      color:inherit;
-      fill: currentColor;
-    }
+.icon {
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  background:#2e3440;
+  border-radius:10px;
+  padding:8px;
+  opacity:0;
+  transform:translateY(20px);
+  animation:fadeInUp 0.4s forwards;
+  transition: transform 0.15s, box-shadow 0.15s, background-color 0.25s, color 0.25s;
+  position:relative;
+  overflow:hidden;
+}
 
-    .icon:hover i, .icon:hover svg, .icon:hover img { transform:scale(1.15); }
-    .icon:hover { transform:scale(1.08); box-shadow:0 4px 12px rgba(0,0,0,.3); cursor:pointer; }
+.icon a {
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  width:100px; height:100px;
+  border-radius:10px;
+  color:var(--text-light);
+  text-decoration:none;
+  opacity:0.9;
+  transition: color 0.2s, opacity 0.2s;
+  z-index:2;
+}
 
-    .icon .label {
-      margin-top:6px;
-      font-size:0.8rem;
-      font-weight:600;
-      color:var(--text-light);
-      opacity:0.85;
-      transition: color .2s, opacity .2s;
-    }
+.icon i, .icon svg, .icon img {
+  width:36px; height:36px;
+  font-size:36px;
+  transition: transform 0.15s;
+  color:inherit;
+  fill:currentColor;
+}
 
-    .icon:hover .label { color:#fff; opacity:1; }
+.icon:hover i, .icon:hover svg, .icon:hover img { transform:scale(1.15); }
+.icon:hover { transform:scale(1.08); box-shadow:0 4px 12px rgba(0,0,0,.3); cursor:pointer; }
 
-    .icon:nth-child(n) { animation-delay: calc(0.05s * var(--n)); }
+.icon .label {
+  margin-top:6px;
+  font-size:0.8rem;
+  font-weight:600;
+  color:var(--text-light);
+  opacity:0.85;
+  transition: color .2s, opacity .2s;
+}
+.icon:hover .label { color:#fff; opacity:1; }
 
-    @keyframes fadeInUp {
-      to { opacity:1; transform:translateY(0); }
-    }
+.icon:nth-child(n) { animation-delay: calc(0.05s * var(--n)); }
+@keyframes fadeInUp { to { opacity:1; transform:translateY(0); } }
 
-    /* Hover backgrounds */
-    .icon.reddit:hover { background: var(--color-re); }
-    .icon.mail:hover { background: var(--color-gm); }
-    .icon.youtube:hover { background: var(--color-yt); }
-    .icon.backloggd:hover { background: #7289da; }
-    .icon.letterboxd:hover { background: #00d474; }
-    .icon.serialisd:hover { background: #ff9900; }
-    .icon.immich:hover { background: #ff4f00; }
-    .icon.plex:hover { background: #e5a00d; }
-    .icon.truenas:hover { background: #0095d5; }
-    .icon.weather:hover { background: #3399ff; }
+/* Hover backgrounds for standard tiles */
+.icon.reddit:hover { background: #ff4500; }
+.icon.youtube:hover { background: #ff0000; }
+.icon.backloggd:hover { background: #7289da; }
+.icon.letterboxd:hover { background: #00d474; }
+.icon.serialisd:hover { background: #ff9900; }
+.icon.immich:hover { background: #ff4f00; }
+.icon.plex:hover { background: #e5a00d; }
+.icon.truenas:hover { background: #0095d5; }
+.icon.weather:hover { background: #3399ff; }
 
-    .icon a:focus { outline: 3px solid #fabd2f; outline-offset:4px; }
+.icon a:focus { outline:3px solid #fabd2f; outline-offset:4px; }
 
-    .search-container {
-      margin-top:20px;
-      width:100%;
-      display:flex;
-      justify-content:center;
-    }
+/* Mail hover-fill overlay */
+.icon.mail .hover-fill {
+  position:absolute; top:0; left:0; height:100%; width:0%;
+  z-index:1;
+  transition: width 0.4s ease, background 0.3s ease;
+}
 
-    .search-container input {
-      width:650px; max-width:95%;
-      padding:14px 18px; border-radius:12px; border:none;
-      font-size:1.1rem; font-family:var(--nerd-font);
-      background:#2e3440; color:var(--text-light);
-      transition: box-shadow 0.2s, background 0.2s;
-    }
+.search-container {
+  margin-top:20px;
+  width:100%;
+  display:flex;
+  justify-content:center;
+}
 
-    .search-container input:focus {
-      outline:none; box-shadow:0 0 8px #fabd2f; background:#3a3f4d;
-    }
-  </style>
+.search-container input {
+  width:650px; max-width:95%;
+  padding:14px 18px; border-radius:12px; border:none;
+  font-size:1.1rem; font-family:var(--nerd-font);
+  background:#2e3440; color:var(--text-light);
+  transition: box-shadow 0.2s, background 0.2s;
+}
+
+.search-container input:focus {
+  outline:none; box-shadow:0 0 8px #fabd2f; background:#3a3f4d;
+}
+</style>
 </head>
 <body>
-  <h1><span class="fire">fire</span>fox</h1>
+<h1><span class="fire">fire</span>fox</h1>
 
-  <div class="icons">
-    <div class="icon reddit"><a href="https://www.reddit.com/"><i class="fab fa-reddit"></i><span class="label">Reddit</span></a></div>
-    <div class="icon mail"><a href="https://outlook.live.com/"><i class="fas fa-envelope"></i><span class="label">Mail</span></a></div>
-    <div class="icon youtube"><a href="https://www.youtube.com/"><i class="fab fa-youtube"></i><span class="label">YouTube</span></a></div>
-    <div class="icon backloggd"><a href="https://backloggd.com/"><i class="fas fa-gamepad"></i><span class="label">Backloggd</span></a></div>
-    <div class="icon letterboxd"><a href="https://letterboxd.com/"><i class="fas fa-film"></i><span class="label">Letterboxd</span></a></div>
-    <div class="icon serialisd"><a href="https://www.serializd.com/"><i class="fas fa-tv"></i><span class="label">Serializd</span></a></div>
-    <div class="icon immich"><a href="http://your-immich-ip/"><i class="fas fa-images"></i><span class="label">Immich</span></a></div>
-    <div class="icon plex"><a href="http://your-plex-server-ip:32400/web"><i class="fas fa-play-circle"></i><span class="label">Plex</span></a></div>
-    <div class="icon truenas"><a href="http://your-truenas-ip/"><i class="fas fa-server"></i><span class="label">TrueNAS</span></a></div>
+<div class="icons">
+  <div class="icon reddit" style="--n:1"><a href="https://www.reddit.com/"><i class="fab fa-reddit"></i><span class="label">Reddit</span></a></div>
 
-    <!-- Dynamic Weather Tile -->
-	<div class="icon weather" id="weatherTile" style="--n:10;">
-		<a href="https://www.google.com/search?q=weather+Finsbury+Park+London" id="weatherLink">
-		<span class="label" id="weatherLabel"></span>
-	</a>
+  <div class="icon mail" style="--n:2;">
+    <div class="hover-fill"></div>
+    <a id="mailLink" href="https://mail.google.com/"><i class="fas fa-envelope"></i><span class="label">Mail</span></a>
+  </div>
+
+  <div class="icon youtube" style="--n:3"><a href="https://www.youtube.com/"><i class="fab fa-youtube"></i><span class="label">YouTube</span></a></div>
+  <div class="icon backloggd" style="--n:4"><a href="https://backloggd.com/"><i class="fas fa-gamepad"></i><span class="label">Backloggd</span></a></div>
+  <div class="icon letterboxd" style="--n:5"><a href="https://letterboxd.com/"><i class="fas fa-film"></i><span class="label">Letterboxd</span></a></div>
+  <div class="icon serialisd" style="--n:6"><a href="https://www.serializd.com/"><i class="fas fa-tv"></i><span class="label">Serializd</span></a></div>
+  <div class="icon immich" style="--n:7"><a href="http://your-immich-ip/"><i class="fas fa-images"></i><span class="label">Immich</span></a></div>
+  <div class="icon plex" style="--n:8"><a href="http://your-plex-server-ip:32400/web"><i class="fas fa-play-circle"></i><span class="label">Plex</span></a></div>
+  <div class="icon truenas" style="--n:9"><a href="http://your-truenas-ip/"><i class="fas fa-server"></i><span class="label">TrueNAS</span></a></div>
+
+  <div class="icon weather" id="weatherTile" style="--n:10;">
+    <a href="https://www.google.com/search?q=weather+Finsbury+Park+London" id="weatherLink"><span class="label" id="weatherLabel"></span></a>
+  </div>
 </div>
 
-  </div>
+<div class="search-container">
+  <form method="get" action="https://www.google.com/search">
+    <input type="text" name="q" placeholder="Search Google..." autofocus>
+  </form>
+</div>
 
-  <div class="search-container">
-    <form method="get" action="https://www.google.com/search">
-      <input type="text" name="q" placeholder="Search Google..." autofocus />
-    </form>
-  </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"></script>
+<script>
+// Mail tile directional fade
+const mailTile = document.querySelector(".icon.mail");
+const mailLink = document.getElementById("mailLink");
+const hoverFill = mailTile.querySelector(".hover-fill");
 
-  <script>
-    const LAT = 51.5646; // Finsbury Park latitude
-    const LON = -0.1066; // Finsbury Park longitude
+mailTile.addEventListener("mousemove", e => {
+  const rect = mailTile.getBoundingClientRect();
+  const mid = rect.left + rect.width / 2;
 
-    async function loadWeather() {
+  if (e.clientX < mid) {
+    // Gmail left
+    mailLink.href = "https://mail.google.com/";
+    hoverFill.style.background = "#d93025";
+    hoverFill.style.left = "0";
+    hoverFill.style.right = "auto";
+    hoverFill.style.width = "100%";
+  } else {
+    // Outlook right
+    mailLink.href = "https://outlook.live.com/";
+    hoverFill.style.background = "#1a73e8";
+    hoverFill.style.left = "auto";
+    hoverFill.style.right = "0";
+    hoverFill.style.width = "100%";
+  }
+});
+
+mailTile.addEventListener("mouseleave", () => {
+  hoverFill.style.width = "0%";
+  mailLink.href = "https://mail.google.com/";
+});
+
+// Weather tile
+const LAT = 51.5646, LON = -0.1066;
+
+async function loadWeather() {
   try {
-    const res = await fetch(
-      `https://api.open-meteo.com/v1/forecast?latitude=${LAT}&longitude=${LON}&current_weather=true`
-    );
+    const res = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${LAT}&longitude=${LON}&current_weather=true`);
     const data = await res.json();
-
     const temp = Math.round(data.current_weather.temperature) + "°C";
     const code = data.current_weather.weathercode;
-
     const weatherTile = document.getElementById("weatherTile");
     const label = document.getElementById("weatherLabel");
     label.textContent = temp;
 
-    // Remove any existing icon <i>
     const existingIcon = weatherTile.querySelector("i");
     if (existingIcon) existingIcon.remove();
 
-    // Map weathercode to Font Awesome class
     let iconClass = "fa-sun";
     if ([1,2,3].includes(code)) iconClass = "fa-cloud-sun";
     else if ([45,48,51,53,55,56,57,61,63,65,66,67,80,81,82].includes(code)) iconClass = "fa-cloud-showers-heavy";
@@ -217,9 +254,7 @@
   }
 }
 
-    loadWeather();
-  </script>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"></script>
+loadWeather();
+</script>
 </body>
 </html>
