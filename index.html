@@ -1,257 +1,225 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Firefox by Mozilla</title>
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="32x32"
-      href="favicon-32x32.png"
-    />
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Firefox by Mozilla</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
 
-    <!-- Inter variable font -->
-    <style>
-      @font-face {
-        font-family: "Inter";
-        src: url("fonts/Inter-VariableFont_opsz,wght.ttf") format("truetype");
-        font-weight: 100 900;
-        font-style: normal;
-      }
-    </style>
+  <style>
+    @font-face {
+      font-family: "Inter";
+      src: url("fonts/Inter-VariableFont_opsz,wght.ttf") format("truetype");
+      font-weight: 100 900;
+      font-style: normal;
+    }
 
-    <!-- Font Awesome CDN -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-    />
+    :root {
+      --nerd-font: "Inter", sans-serif;
+      --color-re: #ff4500;
+      --color-gm: #db4437;
+      --color-yt: #ff0000;
+      --text-light: #eee;
+    }
 
-    <style>
-      :root {
-        --nerd-font: "Inter", sans-serif;
+    * { box-sizing:border-box; user-select:none; }
 
-        --color-re: #ff4500;
-        --color-gm: #db4437;
-        --color-yt: #ff0000;
-        --color-gh: #cccccc;
-        --text-light: #eee;
-        --text-dark: #333;
-      }
+    html {
+      height:100%;
+      margin:0;
+      background:#1d2128;
+      color:#ebdbb2;
+      font-family:var(--nerd-font);
+      display:flex;
+      justify-content:center;
+      align-items:center;
+    }
 
-      * {
-        -webkit-user-select: none;
-        user-select: none;
-        box-sizing: border-box;
-      }
+    body {
+      margin:0;
+      padding-bottom:15vh;
+      text-align:center;
+    }
 
-      html {
-        align-items: center;
-        display: flex;
-        height: 100%;
-        justify-content: center;
-        margin: 0;
-        background-color: #1d2128;
-        color: #ebdbb2;
-        font-family: var(--nerd-font);
-        overflow: hidden;
-      }
+    h1 { font-size:5em; margin:0 0 25px; }
+    h1 .fire {
+      background-image:linear-gradient(65deg,#fb4934,#fabd2f);
+      background-clip:text;
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+    }
 
-      body {
-        padding-bottom: 15vh;
-      }
+    .icons {
+      display:grid;
+      grid-template-columns:repeat(5,1fr);
+      gap:18px;
+      margin-bottom:45px;
+      max-width:90vw;
+    }
 
-      h1 {
-        font-size: 5em;
-        margin-bottom: 25px;
-        text-align: center;
-      }
-      h1 .fire {
-        background-image: linear-gradient(65deg, #fb4934, #fabd2f);
-        background-size: 100%;
-        background-clip: text;
-        -webkit-text-fill-color: transparent;
-      }
+    .icon {
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+      background:#2e3440;
+      border-radius:10px;
+      padding:8px;
+      opacity:0;
+      transform:translateY(20px);
+      animation:fadeInUp 0.4s forwards;
+      transition: transform 0.15s, box-shadow 0.15s, background-color 0.25s, color 0.25s;
+    }
 
-      .icons {
-        display: grid;
-        grid-template-columns: repeat(5, 1fr);
-        gap: 18px;
-        width: auto;
-      }
+    .icon a {
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+      width:100px;
+      height:100px;
+      border-radius:10px;
+      color:var(--text-light);
+      text-decoration:none;
+      opacity:0.9;
+      transition: color 0.2s, opacity 0.2s;
+    }
 
-      .icon {
-        display: flex;
-        flex-direction: column;
-        background: #2e3440;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        border-radius: 10px;
-        padding: 8px;
+    .icon i, .icon svg, .icon img {
+      width:36px;
+      height:36px;
+      font-size:36px;
+      transition: transform 0.15s;
+      color:inherit;
+      fill: currentColor;
+    }
 
-        /* entry animation */
-        opacity: 0;
-        transform: translateY(20px);
-        animation: fadeInUp 0.5s forwards;
+    .icon:hover i, .icon:hover svg, .icon:hover img { transform:scale(1.15); }
+    .icon:hover { transform:scale(1.08); box-shadow:0 4px 12px rgba(0,0,0,.3); cursor:pointer; }
 
-        /* smooth hover transitions */
-        transition: transform 0.2s ease,
-                    box-shadow 0.2s ease,
-                    background-color 0.2s ease,
-                    color 0.2s ease;
-      }
+    .icon .label {
+      margin-top:6px;
+      font-size:0.8rem;
+      font-weight:600;
+      color:var(--text-light);
+      opacity:0.85;
+      transition: color .2s, opacity .2s;
+    }
 
-      .icon:hover {
-        transform: scale(1.08);
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-        cursor: pointer;
-      }
+    .icon:hover .label { color:#fff; opacity:1; }
 
-      .icon a {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        width: 100px;
-        height: 100px;
-        border-radius: 10px;
-        font-size: 36px;
-        color: var(--text-light);
-        opacity: 0.8;
-        text-decoration: none;
-        transition: color 0.2s ease, opacity 0.2s ease;
-      }
+    .icon:nth-child(n) { animation-delay: calc(0.05s * var(--n)); }
 
-      .icon a:hover {
-        color: #fff;
-        opacity: 1;
-      }
+    @keyframes fadeInUp {
+      to { opacity:1; transform:translateY(0); }
+    }
 
-      /* icon scaling on hover */
-      .icon i {
-        transition: transform 0.2s ease;
-      }
-      .icon:hover i {
-        transform: scale(1.15);
-      }
+    /* Hover backgrounds */
+    .icon.reddit:hover { background: var(--color-re); }
+    .icon.mail:hover { background: var(--color-gm); }
+    .icon.youtube:hover { background: var(--color-yt); }
+    .icon.backloggd:hover { background: #7289da; }
+    .icon.letterboxd:hover { background: #00d474; }
+    .icon.serialisd:hover { background: #ff9900; }
+    .icon.immich:hover { background: #ff4f00; }
+    .icon.plex:hover { background: #e5a00d; }
+    .icon.truenas:hover { background: #0095d5; }
+    .icon.weather:hover { background: #3399ff; }
 
-      /* focus styles for keyboard nav */
-      .icon a:focus {
-        outline: 3px solid #fabd2f;
-        outline-offset: 4px;
-      }
+    .icon a:focus { outline: 3px solid #fabd2f; outline-offset:4px; }
 
-      .icon .label {
-        font-size: 0.8rem;
-        font-weight: 600;
-        margin-top: 6px;
-        color: var(--text-light);
-        opacity: 0.8;
-        text-decoration: none;
-        transition: color 0.2s ease, opacity 0.2s ease;
-      }
+    .search-container {
+      margin-top:20px;
+      width:100%;
+      display:flex;
+      justify-content:center;
+    }
 
-      .icon:hover .label {
-        color: #fff;
-        opacity: 1;
-      }
+    .search-container input {
+      width:650px; max-width:95%;
+      padding:14px 18px; border-radius:12px; border:none;
+      font-size:1.1rem; font-family:var(--nerd-font);
+      background:#2e3440; color:var(--text-light);
+      transition: box-shadow 0.2s, background 0.2s;
+    }
 
-      /* stagger animation delays */
-      .icon:nth-child(1) { animation-delay: 0.05s; }
-      .icon:nth-child(2) { animation-delay: 0.1s; }
-      .icon:nth-child(3) { animation-delay: 0.15s; }
-      .icon:nth-child(4) { animation-delay: 0.2s; }
-      .icon:nth-child(5) { animation-delay: 0.25s; }
-      .icon:nth-child(6) { animation-delay: 0.3s; }
-      .icon:nth-child(7) { animation-delay: 0.35s; }
-      .icon:nth-child(8) { animation-delay: 0.4s; }
-      .icon:nth-child(9) { animation-delay: 0.45s; }
-      .icon:nth-child(10) { animation-delay: 0.5s; }
+    .search-container input:focus {
+      outline:none; box-shadow:0 0 8px #fabd2f; background:#3a3f4d;
+    }
+  </style>
+</head>
+<body>
+  <h1><span class="fire">fire</span>fox</h1>
 
-      @keyframes fadeInUp {
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
+  <div class="icons">
+    <div class="icon reddit"><a href="https://www.reddit.com/"><i class="fab fa-reddit"></i><span class="label">Reddit</span></a></div>
+    <div class="icon mail"><a href="https://outlook.live.com/"><i class="fas fa-envelope"></i><span class="label">Mail</span></a></div>
+    <div class="icon youtube"><a href="https://www.youtube.com/"><i class="fab fa-youtube"></i><span class="label">YouTube</span></a></div>
+    <div class="icon backloggd"><a href="https://backloggd.com/"><i class="fas fa-gamepad"></i><span class="label">Backloggd</span></a></div>
+    <div class="icon letterboxd"><a href="https://letterboxd.com/"><i class="fas fa-film"></i><span class="label">Letterboxd</span></a></div>
+    <div class="icon serialisd"><a href="https://www.serializd.com/"><i class="fas fa-tv"></i><span class="label">Serializd</span></a></div>
+    <div class="icon immich"><a href="http://your-immich-ip/"><i class="fas fa-images"></i><span class="label">Immich</span></a></div>
+    <div class="icon plex"><a href="http://your-plex-server-ip:32400/web"><i class="fas fa-play-circle"></i><span class="label">Plex</span></a></div>
+    <div class="icon truenas"><a href="http://your-truenas-ip/"><i class="fas fa-server"></i><span class="label">TrueNAS</span></a></div>
 
-      /* Hover backgrounds */
-      .icon.reddit:hover { background: var(--color-re); }
-      .icon.github:hover { background: var(--color-gh); }
-      .icon.mail:hover { background: var(--color-gm); }
-      .icon.youtube:hover { background: var(--color-yt); }
-      .icon.backloggd:hover { background: #7289da; }
-      .icon.letterboxd:hover { background: #00d474; }
-      .icon.serialisd:hover { background: #ff9900; }
-      .icon.immich:hover { background: #ff4f00; }
-      .icon.plex:hover { background: #e5a00d; }
-      .icon.truenas:hover { background: #0095d5; }
-    </style>
-  </head>
-  <body>
-    <h1><a class="fire">fire</a>fox</h1>
-    <div class="icons">
-      <div class="icon reddit">
-        <a href="https://www.reddit.com" target="_top">
-          <i class="fab fa-reddit"></i>
-          <span class="label">Reddit</span>
-        </a>
-      </div>
-      <div class="icon github">
-        <a href="https://github.com/" target="_top">
-          <i class="fab fa-github"></i>
-          <span class="label">GitHub</span>
-        </a>
-      </div>
-      <div class="icon mail">
-        <a href="https://outlook.live.com/" target="_top">
-          <i class="fas fa-envelope"></i>
-          <span class="label">Mail</span>
-        </a>
-      </div>
-      <div class="icon youtube">
-        <a href="https://www.youtube.com/" target="_top">
-          <i class="fab fa-youtube"></i>
-          <span class="label">YouTube</span>
-        </a>
-      </div>
-      <div class="icon backloggd">
-        <a href="https://backloggd.com/" target="_top">
-          <i class="fas fa-gamepad"></i>
-          <span class="label">Backloggd</span>
-        </a>
-      </div>
-      <div class="icon letterboxd">
-        <a href="https://letterboxd.com/" target="_top">
-          <i class="fas fa-film"></i>
-          <span class="label">Letterboxd</span>
-        </a>
-      </div>
-      <div class="icon serialisd">
-        <a href="https://www.serializd.com/" target="_top">
-          <i class="fas fa-tv"></i>
-          <span class="label">Serializd</span>
-        </a>
-      </div>
-      <div class="icon immich">
-        <a href="http://your-immich-ip/" target="_top">
-          <i class="fas fa-images"></i>
-          <span class="label">Immich</span>
-        </a>
-      </div>
-      <div class="icon plex">
-        <a href="http://your-plex-server-ip:32400/web" target="_top">
-          <i class="fas fa-play-circle"></i>
-          <span class="label">Plex</span>
-        </a>
-      </div>
-      <div class="icon truenas">
-        <a href="https://192.168.0.28/" target="_top">
-          <i class="fas fa-server"></i>
-          <span class="label">TrueNAS</span>
-        </a>
-      </div>
-    </div>
-  </body>
+    <!-- Dynamic Weather Tile -->
+	<div class="icon weather" id="weatherTile" style="--n:10;">
+		<a href="https://www.google.com/search?q=weather+Finsbury+Park+London" id="weatherLink">
+		<span class="label" id="weatherLabel"></span>
+	</a>
+</div>
+
+  </div>
+
+  <div class="search-container">
+    <form method="get" action="https://www.google.com/search">
+      <input type="text" name="q" placeholder="Search Google..." autofocus />
+    </form>
+  </div>
+
+  <script>
+    const LAT = 51.5646; // Finsbury Park latitude
+    const LON = -0.1066; // Finsbury Park longitude
+
+    async function loadWeather() {
+  try {
+    const res = await fetch(
+      `https://api.open-meteo.com/v1/forecast?latitude=${LAT}&longitude=${LON}&current_weather=true`
+    );
+    const data = await res.json();
+
+    const temp = Math.round(data.current_weather.temperature) + "°C";
+    const code = data.current_weather.weathercode;
+
+    const weatherTile = document.getElementById("weatherTile");
+    const label = document.getElementById("weatherLabel");
+    label.textContent = temp;
+
+    // Remove any existing icon <i>
+    const existingIcon = weatherTile.querySelector("i");
+    if (existingIcon) existingIcon.remove();
+
+    // Map weathercode to Font Awesome class
+    let iconClass = "fa-sun";
+    if ([1,2,3].includes(code)) iconClass = "fa-cloud-sun";
+    else if ([45,48,51,53,55,56,57,61,63,65,66,67,80,81,82].includes(code)) iconClass = "fa-cloud-showers-heavy";
+    else if ([71,73,75,77,85,86].includes(code)) iconClass = "fa-snowflake";
+    else if ([3,4,5,6].includes(code)) iconClass = "fa-cloud";
+
+    const i = document.createElement("i");
+    i.classList.add("fas", iconClass);
+    i.style.fontSize = "36px";
+
+    weatherTile.querySelector("a").insertBefore(i, label);
+  } catch (err) {
+    console.error("Weather fetch error:", err);
+    document.getElementById("weatherLabel").textContent = "N/A";
+  }
+}
+
+    loadWeather();
+  </script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"></script>
+</body>
 </html>
